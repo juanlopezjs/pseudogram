@@ -1,20 +1,40 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import firebase from 'firebase';
-import App from './App';
-import './index.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from 'history';
+import { PrivateRoute } from './utils/AuthService';
+import store from './reducers/store';
+import { Provider } from 'react-redux';
+
+import App from './containers/App';
+import Login from './containers/LoginContainer';
+import Toast from './containers/ToastContainer';
+import Register from './containers/RegisterContainer';
+/*Style */
+import './App.css';
+
 
 const config = {
-  apiKey: "INGRESAR KEY",
-  authDomain: "INGRESAR DOMINIO",
-  databaseURL: "INGRESAR URL",
-  storageBucket: "INGRESAR STORAGE",
-  messagingSenderId: "INGRESAR ID"
+
 };
 
+const history = createBrowserHistory();
 firebase.initializeApp(config);
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+render(
+    <Provider store={store}>
+        <div>
+            <Toast/>
+            <BrowserRouter history={history}>
+                <Switch>
+                    <Route exact path="/login" name="Login Page" component={Login} />
+                    <Route exact path="/register" name="Login Page" component={Register} />
+                    <Route exact path="/login/identify" name="Login Page" component={Login} />
+                    <PrivateRoute path="/" component={App} />
+                </Switch>
+            </BrowserRouter >
+        </div>
+    </Provider>,
+    document.getElementById('root')
 );
