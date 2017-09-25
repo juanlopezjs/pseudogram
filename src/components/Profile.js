@@ -1,30 +1,36 @@
-import React from 'react';
+import React,{Component} from 'react';
 
 
-const Profile = (props) => {
-    
-    props.loadPerfil(props.match.params.id)
-    return (   
-        <header>
-            <div>
+
+class Profile extends Component {
+
+    componentWillMount() {
+        this.props.loadPerfil(this.props.match.params.id)
+    }
+
+    render(){
+        let perfil = this.props.perfil.perfil == null ? ("") : this.props.perfil.perfil;
+        return (   
+            <header>
                 <div>
-                    <img src={props.perfil.photoURL} alt={props.perfil.usuario} />
+                    <div>
+                        <img src={perfil.photoURL} alt={perfil.usuario} />
+                    </div>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <h1>{props.perfil.usuario}</h1>
+                    <div>
+                        <h1>{perfil.usuario}</h1>
+                    </div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div></div>
                 </div>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-                <div></div>
-                <h3>ID: {props.match.params.id}</h3>
-            </div>
-        </header>
-    )
+            </header>
+        )
+    }
 }
 
 export default Profile;
