@@ -1,36 +1,28 @@
-import React,{Component} from 'react';
+import React from 'react';
 
-
-
-class Profile extends Component {
-
-    componentWillMount() {
-        this.props.loadPerfil(this.props.match.params.id)
-    }
-
-    render(){
-        let perfil = this.props.perfil.perfil == null ? ("") : this.props.perfil.perfil;
-        return (   
-            <header>
+const Profile = (props) =>{
+    let {perfil} = props.perfil
+    return (   
+        <header>
+            <div className="photo">
                 <div>
-                    <div>
-                        <img src={perfil.photoURL} alt={perfil.usuario} />
-                    </div>
+                    <img src={perfil.photoURL} alt={perfil.usuario} />
                 </div>
-                <div>
-                    <div>
-                        <h1>{perfil.usuario}</h1>
-                    </div>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                    <div></div>
+            </div>
+            <div className="divDataPerfil">
+                <div className="nameUserPerfil">
+                    <h1>{perfil.usuario}</h1>
                 </div>
-            </header>
-        )
-    }
+                <ul>
+                    <li>ejemplo 1</li>
+                    <li>ejemplo 2</li>
+                    <li>ejemplo 3</li>
+                </ul>
+                <div></div>
+            </div>
+        </header>
+    )
+    
 }
 
 export default Profile;

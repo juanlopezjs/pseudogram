@@ -334,3 +334,66 @@ a:visited {
 .md-ui.component-snackbar {
     background-color: red !important;
 }
+
+article {
+    text-align: center;
+    margin-top: 95px;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.photo {
+    flex-grow: 1;
+    margin-right: 30px;
+    flex-basis: 0;
+}
+
+.photo div {
+    background-color: #fafafa;
+    border-radius: 50%;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    height: 150px;
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divDataPerfil {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30px;
+    flex-grow: 2;
+}
+
+.nameUserPerfil {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.divDataPerfil ul {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.divDataPerfil ul li {
+    font-size: 16px;
+    margin-right: 40px;
+}

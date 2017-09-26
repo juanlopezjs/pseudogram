@@ -12,8 +12,8 @@ import Photo from 'material-ui-icons/PhotoCamera';
 /*View */
 import Home from '../containers/HomeContainer';
 import Explorer from '../components/Explorer';
-import NotFound from '../components/NotFound';
 import ProfileView from '../containers/ProfileContainer';
+import NotFound from '../components/NotFound';
 
 
 class App extends Component {
@@ -46,10 +46,10 @@ class App extends Component {
         </div>
         <div className="App-intro">
           <Switch>
-            <Route path="/explore" render={() => (<Explorer />)} />
-            <Route path="/" exact={true} render={(props) => (<Home {...props} />)} />
-            <Route path="/:id" component={ProfileView} />
-            <Route path="*" exact={true} component={NotFound} />
+            <Route exact path="/explore" render={() => (<Explorer />)} />
+            <Route exact path="/" render={(props) => (<Home {...props} />)} />
+            <Route exact path="/:id" component={ProfileView} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </div>
       </div>
