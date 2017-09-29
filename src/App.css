@@ -336,16 +336,20 @@ a:visited {
 }
 
 article {
+    margin: 0 auto;
     text-align: center;
     margin-top: 95px;
     display: flex;
     flex-direction: column;
+    max-width: 935px;
+    width: 100%;
 }
 
 header {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
+    margin-bottom: 44px;
 }
 
 .photo {
@@ -367,6 +371,11 @@ header {
     margin-right: auto;
 }
 
+.photo div img {
+    width: 150px;
+    height: 150px;
+}
+
 .divDataPerfil {
     display: flex;
     flex-direction: column;
@@ -383,6 +392,10 @@ header {
     min-width: 0;
 }
 
+.nameUserPerfil a {
+    margin-left: 20px;
+}
+
 .divDataPerfil ul {
     display: flex;
     flex-direction: row;
@@ -396,4 +409,61 @@ header {
 .divDataPerfil ul li {
     font-size: 16px;
     margin-right: 40px;
+}
+
+.perfilUser {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 200;
+}
+
+.btnEditPerfil {
+    background: 0 0;
+    border-color: #dbdbdb;
+    color: #262626;
+    padding: 0 24px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 26px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.gridPhoto {
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-bottom: 28px;
+    width: 33%;
+}
+
+.grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.example {
+    height: 293px;
+    background: red;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 0%;
+    -ms-flex: 1 0 0%;
+    flex: 1 0 0%;
+    margin-right: 22px;
+    display: block;
+    position: relative;
+    width: 100%;
 }

@@ -4,11 +4,6 @@ import Profile from '../components/Profile';
 import {loadPerfil} from '../actions/profileAction'
 import NotFound from '../components/NotFound';
 
-const style = {
-    textAlign: 'center',
-    marginTop: '95px'
-}
-
 class ProfileContainer extends Component{
 
     constructor(props){
@@ -39,9 +34,7 @@ class ProfileContainer extends Component{
 
         if(perfil != null){
             return (
-                <article style={style}>
-                    <Profile {...this.props}/>
-                </article>
+                <Profile {...this.props}/>
             )
         }else{
             return null
