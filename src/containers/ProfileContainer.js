@@ -11,22 +11,17 @@ class ProfileContainer extends Component{
         this.foundPage = true;
     }
 
-    componentWillMount(){
-        console.log(this.props.match.params.id)
-         this.props.loadPerfil(this.props.match.params.id).then(result =>{
+    componentWillMount() {
+        let usuario = this.props.match.params.id;
+         this.props.loadPerfil(usuario).then(result =>{
              this.foundPage = result;
          })
     }
 
-    componentWillUpdate() {
-       console.log(this.props.match.params.id)
-         this.props.loadPerfil(this.props.match.params.id).then(result =>{
-             this.foundPage = result;
-         })
-    }
+   
 
     render(){
-        let {perfil} = this.props.perfil;
+        let perfil = this.props.perfil;
 
         if(!this.foundPage){
             return(<NotFound />)
@@ -44,7 +39,8 @@ class ProfileContainer extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        perfil: state.perfil
+        perfil: state.perfil,
+        picturesPerfil: state.picturesPerfil
     }
 };
 

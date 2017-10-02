@@ -54,17 +54,23 @@ const toast = (state = { message: "", open: false }, action) => {
     }
 }
 
-const perfil = (state = { perfil: null, pictures: [] }, action) => {
+const perfil = (state = null, action) => {
     switch (action.type) {
         case 'PERFIL':
-            return Object.assign({}, state, { perfil: action.perfil })
-        case 'LOAD_PICTURES_PERFIL':
-            return state.concat({ pictures: action.pictures })
+            return Object.assign({}, state, action.perfil)
         default:
             return state
     }
 }
 
+const picturesPerfil = (state = [], action) => {
+    switch (action.type) {
+        case 'LOAD_PICTURES_PERFIL':
+            return state.concat(action.pictures)
+        default:
+            return state
+    }
+}
 
 const logger = store => next => action => {
     let result = next(action)
@@ -77,6 +83,7 @@ export default createStore(combineReducers({
         pictures,
         fileUpload,
         toast,
-        perfil
+        perfil,
+        picturesPerfil
     }),
     composeWithDevTools(applyMiddleware(logger, thunk)));
