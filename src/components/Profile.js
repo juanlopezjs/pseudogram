@@ -13,6 +13,7 @@ const preloader = () => {
 
 const Profile = (props) =>{
     let perfil = props.perfil
+    let user = props.user != null ? (props.user.usuario) : null;
     return (   
         <article style={style}>
             <header>
@@ -24,12 +25,29 @@ const Profile = (props) =>{
                 <div className="divDataPerfil">
                     <div className="nameUserPerfil">
                         <h1 className="perfilUser">{perfil.usuario}</h1>
-                        <Link to="/explore">
-                            <button className="btnEditPerfil">Editar perfil</button>
-                        </Link>
-                        <div className="settings">
-                            <button className="btnSettings"><Settings/></button>
-                        </div>
+                        {user === perfil.usuario &&
+                            <Link to="/explore">
+                                <button className="btnEditPerfil">Editar perfil</button>
+                            </Link>
+                        }
+                        {user === perfil.usuario &&
+                            <div className="settings">
+                                <button className="btnSettings"><Settings/></button>
+                            </div>
+                        }
+
+                        {user !== perfil.usuario &&
+                            <div>
+                                <div>
+                                    <button>Seguir</button>
+                                </div>
+                                <div>
+                                    <button>
+                                        ...
+                                    </button>
+                                </div>
+                            </div>
+                        }
                     </div>
                     <ul className="ulCont">
                         <li><span>{props.picturesPerfil.length}</span> publicaciones</li>
@@ -45,7 +63,7 @@ const Profile = (props) =>{
             <div className="grid">
             {
                 props.picturesPerfil.map(picture => (
-                    <div className="gridPhoto">
+                    <div className="gridPhoto" key={picture.id}>
                         <ImageLoader
                             src={picture.image}
                             preloader={preloader}>

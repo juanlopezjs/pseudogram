@@ -32,7 +32,6 @@ export const loadPerfil = (id) => (dispatch, getState) => {
                 dispatch(perfil(userPerfil));
                 firebase.database().ref('pictures').orderByChild('uid').equalTo(keyID)
                     .on('child_added', snapshot => {
-                        console.log(snapshot.val())
                         dispatch(picturesPerfil(snapshot.val()));
                     })
                 resolve(true)

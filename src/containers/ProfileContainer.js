@@ -11,14 +11,20 @@ class ProfileContainer extends Component{
         this.foundPage = true;
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let usuario = this.props.match.params.id;
          this.props.loadPerfil(usuario).then(result =>{
              this.foundPage = result;
          })
     }
-
-   
+  
+    componentWillReceiveProps(nextProps){
+        if(nextProps.match.params.id !== this.props.match.params.id){
+            console.log(nextProps.match.params.id)
+            this.forceUpdate();
+        }
+        
+    }
 
     render(){
         let perfil = this.props.perfil;
@@ -40,7 +46,8 @@ class ProfileContainer extends Component{
 const mapStateToProps = (state) => {
     return {
         perfil: state.perfil,
-        picturesPerfil: state.picturesPerfil
+        picturesPerfil: state.picturesPerfil,
+        user: state.user
     }
 };
 

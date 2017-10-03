@@ -18,9 +18,9 @@ import NotFound from '../components/NotFound';
 
 class App extends Component {
 
-  componentWillMount() {
-    this.props.onAuthStateChanged().then(() =>{
-      this.props.loadPicture();
+  async componentDidMount() {
+    await this.props.onAuthStateChanged().then(() =>{
+       this.props.loadPicture();
     })
   }
 
