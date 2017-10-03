@@ -5,7 +5,7 @@ export default class ListFile extends Component {
 
 
     preloader() {
-        return <img src="http://assets.motherjones.com/interactives/projects/features/koch-network/shell19/img/loading.gif" role="presentation" className="loading" />;
+        return <div className="preloadAnimated homeLoad"></div>
     }
 
     render() {

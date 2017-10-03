@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import ImageLoader from 'react-imageloader';
+import Settings from 'material-ui-icons/Settings';
 
 const style = {
-    textAlign: 'center',
-    marginTop: '95px'
+    textAlign: 'center'
+}
+
+const preloader = () => {
+    return <div className="preloadAnimated"></div>
 }
 
 const Profile = (props) =>{
-    let {perfil} = props.perfil
+    let perfil = props.perfil
     return (   
         <article style={style}>
             <header>
@@ -22,45 +27,36 @@ const Profile = (props) =>{
                         <Link to="/explore">
                             <button className="btnEditPerfil">Editar perfil</button>
                         </Link>
-                        <div>
-                            <button></button>
+                        <div className="settings">
+                            <button className="btnSettings"><Settings/></button>
                         </div>
                     </div>
-                    <ul>
-                        <li>ejemplo 1</li>
-                        <li>ejemplo 2</li>
-                        <li>ejemplo 3</li>
+                    <ul className="ulCont">
+                        <li><span>{props.picturesPerfil.length}</span> publicaciones</li>
+                        <li>seguidores</li>
+                        <li>seguidos</li>
                     </ul>
-                    <div></div>
+                    <div className="desUser">
+                        <h2>{perfil.nombres}</h2>
+                        <span></span>
+                    </div>
                 </div>
             </header>
             <div className="grid">
-                 <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                <div className="gridPhoto">
-                    <div className="example"></div>
-                </div>
-                
-
+            {
+                props.picturesPerfil.map(picture => (
+                    <div className="gridPhoto">
+                        <ImageLoader
+                            src={picture.image}
+                            preloader={preloader}>
+                        </ImageLoader>
+                        <div className="links">
+                            <a href=""><i className="fa fa-heart"></i><span></span></a>
+                            <a href=""><i className="fa fa-comment"></i><span></span></a>
+                        </div>
+                    </div>
+                ))
+            }
             </div>
         </article>
     )
