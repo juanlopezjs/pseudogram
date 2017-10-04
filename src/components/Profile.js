@@ -37,14 +37,12 @@ const Profile = (props) =>{
                         }
 
                         {user !== perfil.usuario &&
-                            <div>
+                            <div className="divContentSeguir">
                                 <div>
-                                    <button>Seguir</button>
+                                    <button className="btnSeguir">Seguir</button>
                                 </div>
-                                <div>
-                                    <button>
-                                        ...
-                                    </button>
+                                <div className="divOpciones">
+                                    <button className="btnOpciones">...</button>
                                 </div>
                             </div>
                         }
