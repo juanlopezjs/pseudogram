@@ -25,13 +25,8 @@ export const btnSeguir = (userRequests, userFollow) => {
 
     return dispatch => {
 
-        console.log(userRequests);
-        console.log(userFollow);
-
-        firebase.database().ref('users/' + userRequests).push().set({
-            followed: { userFollow }
-        });
-
+        let refUserFolloe = firebase.database().ref('users/' + userRequests).child("followed").push()
+        refUserFolloe.set({ uid: userFollow })
     }
 }
 
