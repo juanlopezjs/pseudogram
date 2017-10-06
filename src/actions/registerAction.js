@@ -1,7 +1,18 @@
 import firebase from 'firebase';
 import { register } from '../utils/AuthService';
 import { openToast, messagesLoad } from './toastAction';
-import {loginButton } from './loginAction';
+import { loginButton } from './loginAction';
+
+export const createUser = (user) => {
+
+    firebase.database().ref(`users/${user.uid}`).set({
+        uid: user.uid,
+        nombres: user.nombres,
+        usuario: user.usuario,
+        email: user.email,
+        photoURL: user.photoURL
+    })
+}
 
 export const registerButton = () => (dispatch, getState) => {
     let form = document.forms[0];
@@ -10,20 +21,18 @@ export const registerButton = () => (dispatch, getState) => {
     let nombres = form.txtName.value;
     let usuario = form.txtUser.value;
 
-    register(email, password).then((user) => {
+    register(email, password).then((data) => {
 
-        firebase.database().ref(`users/${user.uid}`).set({
-            uid: user.uid,
-            nombres: nombres,
-            usuario: usuario,
+        let user = {
+            uid: data.uid,
             email: email,
+            usuario: usuario,
+            nombres: nombres,
             photoURL: 'https://scontent-frx5-1.cdninstagram.com/t51.2885-19/11906329_960233084022564_1448528159_a.jpg'
-        }).then(() => {
-            loginButton(false)(dispatch)
-        }).catch(error => {
-            dispatch(messagesLoad(`${error.message}`));
-            dispatch(openToast(true));
-        });
+        }
+        createUser(user)
+        dispatch(loginButton(false))
+
     }).catch(error => {
         dispatch(messagesLoad(`${error.message}`));
         dispatch(openToast(true));

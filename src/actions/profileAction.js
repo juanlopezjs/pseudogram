@@ -21,6 +21,20 @@ const getUser = (user, callback) => {
     })
 }
 
+export const btnSeguir = (userRequests, userFollow) => {
+
+    return dispatch => {
+
+        console.log(userRequests);
+        console.log(userFollow);
+
+        firebase.database().ref('users/' + userRequests).push().set({
+            followed: { userFollow }
+        });
+
+    }
+}
+
 
 export const loadPerfil = (id) => (dispatch, getState) => {
     //.limitToLast(11)

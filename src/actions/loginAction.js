@@ -1,5 +1,6 @@
 import { fakeAuth } from '../utils/AuthService';
 import { openToast, messagesLoad } from './toastAction';
+import { createUser } from './registerAction'
 
 const authenticate = () => {
     return {
@@ -9,6 +10,16 @@ const authenticate = () => {
 
 export const loginButton = provider => (dispatch) => {
     fakeAuth.authenticate(provider).then(result => {
+        if (provider) {
+            let user = {
+                uid: result.user.uid,
+                nombres: result.user.displayName,
+                usuario: result.user.email.split("@")[0],
+                email: result.user.email,
+                photoURL: result.user.photoURL
+            }
+            createUser(user)
+        }
         localStorage.setItem("isAuthenticated", true)
         dispatch(authenticate())
     }).catch(error => {

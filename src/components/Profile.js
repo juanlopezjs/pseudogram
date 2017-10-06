@@ -39,7 +39,7 @@ const Profile = (props) =>{
                         {user !== perfil.usuario &&
                             <div className="divContentSeguir">
                                 <div>
-                                    <button className="btnSeguir">Seguir</button>
+                                    <button className="btnSeguir" onClick={() => props.btnSeguir(props.user.uid, perfil.uid)}>Seguir</button>
                                 </div>
                                 <div className="divOpciones">
                                     <button className="btnOpciones">...</button>
