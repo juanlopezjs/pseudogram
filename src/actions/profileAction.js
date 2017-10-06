@@ -24,9 +24,14 @@ const getUser = (user, callback) => {
 export const btnSeguir = (userRequests, userFollow) => {
 
     return dispatch => {
+        let bdFirebase = firebase.database()
+        let refUserFollowed = bdFirebase.ref('users/' + userRequests).child("followed").push()
+        refUserFollowed.set({ uid: userFollow })
 
-        let refUserFolloe = firebase.database().ref('users/' + userRequests).child("followed").push()
-        refUserFolloe.set({ uid: userFollow })
+          /*Seguidores */
+        bdFirebase.ref('users/' + userFollow)
+        .child("followers").push()
+        .set({ uid: userRequests })
     }
 }
 
