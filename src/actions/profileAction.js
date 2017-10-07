@@ -35,7 +35,6 @@ export const btnSeguir = (userRequests, userFollow) => {
             .set({ uid: userRequests })
 
         followers.once('value', (user) => {
-            console.log(user.val());
             dispatch(perfil(user.val()));
         })
     }

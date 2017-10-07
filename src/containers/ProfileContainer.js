@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Profile from '../components/Profile';
 import {loadPerfil, btnSeguir, userFollowed} from '../actions/profileAction'
+
+/** COMPONENTS **/
+import HeaderProfile from '../components/HeaderProfile';
+import PicturesProfile from '../components/PicturesProfile';
 import NotFound from '../components/NotFound';
+
+const style = {
+    textAlign: 'center'
+}
 
 class ProfileContainer extends Component{
 
@@ -20,7 +27,6 @@ class ProfileContainer extends Component{
   
     componentWillReceiveProps(nextProps){
         if(nextProps.match.params.id !== this.props.match.params.id){
-            console.log(nextProps.match.params.id)
             this.forceUpdate();
         }
         
@@ -35,7 +41,10 @@ class ProfileContainer extends Component{
 
         if(perfil != null){
             return (
-                <Profile {...this.props}/>
+                <article style={style}>
+                    <HeaderProfile {...this.props}/>
+                    <PicturesProfile {...this.props}/>
+                </article>
             )
         }else{
             return null
