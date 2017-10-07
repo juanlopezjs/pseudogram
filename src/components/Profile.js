@@ -11,12 +11,14 @@ const preloader = () => {
     return <div className="preloadAnimated"></div>
 }
 
+
 const Profile = (props) =>{
     let perfil = props.perfil
     let user = props.user != null ? (props.user.usuario) : null;
     let followed = perfil != null && props.perfil.followed ? (props.perfil.followed) : {};
     let followers = perfil != null && props.perfil.followers ? (props.perfil.followers) : {};
-        
+    
+    
     return (   
         <article style={style}>
             <header>
@@ -33,13 +35,25 @@ const Profile = (props) =>{
                                 <button className="btnEditPerfil">Editar perfil</button>
                             </Link>
                         }
+
                         {user === perfil.usuario &&
                             <div className="settings">
                                 <button className="btnSettings"><Settings/></button>
                             </div>
                         }
 
-                        {user !== perfil.usuario &&
+                        {user != null && props.userFollowed(props.user.followed, perfil.uid) === true &&
+                            <div className="divContentSeguir">
+                                <div>
+                                <button className="btnEditPerfil">Seguido</button>
+                                </div>
+                                <div className="divOpciones">
+                                    <button className="btnOpciones">...</button>
+                                </div>
+                            </div>
+                        }
+
+                        {(user == null  || ( user !== perfil.usuario && props.userFollowed(props.user.followed, perfil.uid) === false )) && 
                             <div className="divContentSeguir">
                                 <div>
                                     <button className="btnSeguir" onClick={() => props.btnSeguir(props.user.uid, perfil.uid)}>Seguir</button>

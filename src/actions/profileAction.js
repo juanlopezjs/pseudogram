@@ -25,18 +25,29 @@ export const btnSeguir = (userRequests, userFollow) => {
 
     return dispatch => {
         let bdFirebase = firebase.database()
-        let refUserFollowed = bdFirebase.ref('users/' + userRequests).child("followed").push()
-        refUserFollowed.set({ uid: userFollow })
+        bdFirebase.ref('users/' + userRequests)
+            .child("followed/" + userFollow)
+            .set({ uid: userFollow })
 
-          /*Seguidores */
-        bdFirebase.ref('users/' + userFollow)
-        .child("followers").push()
-        .set({ uid: userRequests })
+        /*Seguidores */
+        let followers = bdFirebase.ref('users/' + userFollow)
+        followers.child("followers/" + userRequests)
+            .set({ uid: userRequests })
+
+        followers.once('value', (user) => {
+            console.log(user.val());
+            dispatch(perfil(user.val()));
+        })
     }
 }
 
+export const userFollowed = (arrayFollowed, userUid) => {
+    let arr = (arrayFollowed === undefined) ? {} : arrayFollowed;
+    return dispatch => Object.keys(arr).includes(userUid)
+}
 
-export const loadPerfil = (id) => (dispatch, getState) => {
+
+export const loadPerfil = (id) => (dispatch) => {
     //.limitToLast(11)
     return new Promise(function(resolve) {
         getUser(id, (user) => {

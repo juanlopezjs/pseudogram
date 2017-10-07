@@ -12,6 +12,16 @@ export function logout() {
 
 }
 
+export const userExist = (id) => {
+    return new Promise(function(resolve) {
+        let user =  firebase.database().ref(`users/${id}`);
+        user.once('value', (dataUser) => {
+            resolve(dataUser.val() !== null)
+        })
+    })
+    
+}
+
 export async function register(email, password) {
     return await firebase.auth().createUserWithEmailAndPassword(email,password);
 }

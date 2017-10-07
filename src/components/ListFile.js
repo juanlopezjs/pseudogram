@@ -17,7 +17,9 @@ export default class ListFile extends Component {
                             <figure className="App-card-image">
                                 <figCaption className="App-card-footer">
                                     <img className="App-card-avatar" width="30" src={picture.user.photoURL} alt={picture.user.usuario} />
-                                    <span className="App-card-name">{picture.user.usuario}</span>
+                                    <span className="App-card-name">
+                                        <a href={`/${picture.user.usuario}`}>{picture.user.usuario}</a>
+                                    </span>
                                 </figCaption>
                                 <ImageLoader
                                     src={picture.image}

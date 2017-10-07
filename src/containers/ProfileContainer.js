@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Profile from '../components/Profile';
-import {loadPerfil, btnSeguir} from '../actions/profileAction'
+import {loadPerfil, btnSeguir, userFollowed} from '../actions/profileAction'
 import NotFound from '../components/NotFound';
 
 class ProfileContainer extends Component{
@@ -55,6 +55,7 @@ export default connect(
     mapStateToProps, 
     {
         loadPerfil,
-        btnSeguir
+        btnSeguir,
+        userFollowed
     }
 )(ProfileContainer);
