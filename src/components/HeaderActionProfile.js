@@ -20,7 +20,7 @@ const HeaderActionProfile = (props) =>{
         return (
             <div className="divContentSeguir">
                 <div>
-                <button className="btnSeguir">Seguido</button>
+                <button className="btnEditPerfil">Seguido</button>
                 </div>
                 <div className="divOpciones">
                     <button className="btnOpciones">...</button>
