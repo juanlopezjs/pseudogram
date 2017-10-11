@@ -32,6 +32,12 @@ li {
     vertical-align: baseline;
 }
 
+a,
+a:visited {
+    color: #003569;
+    text-decoration: none;
+}
+
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;

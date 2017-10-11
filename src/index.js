@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from 'history';
 import { PrivateRoute } from './utils/AuthService';
-import store from './reducers/store';
+import store from './store/store';
 import { Provider } from 'react-redux';
 
 import App from './containers/App';
