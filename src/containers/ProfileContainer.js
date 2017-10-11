@@ -27,8 +27,12 @@ class ProfileContainer extends Component{
   
     componentWillReceiveProps(nextProps){
         if(nextProps.match.params.id !== this.props.match.params.id){
-            this.forceUpdate();
+            this.props.loadPerfil(nextProps.match.params.id).then(result =>{
+             this.foundPage = result;
+         })
         }
+
+        //this.setState({ notes: store.notes.notes })
         
     }
 

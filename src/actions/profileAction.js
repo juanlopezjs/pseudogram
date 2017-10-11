@@ -14,11 +14,10 @@ const picturesPerfil = (pictures) => {
     }
 }
 
-const getUser = (user, callback) => {
-    let userRef = firebase.database().ref('users').orderByChild('usuario').equalTo(user);
-    userRef.once('value', (user) => {
-        callback(user);
-    })
+const getUser = async (user, callback) => {
+    let userRef = await firebase.database().ref('users').orderByChild('usuario').equalTo(user);
+    let userF = await userRef.once('value');
+    return userF;
 }
 
 export const btnSeguir = (userRequests, userFollow) => {
@@ -49,7 +48,7 @@ export const userFollowed = (arrayFollowed, userUid) => {
 export const loadPerfil = (id) => (dispatch) => {
     //.limitToLast(11)
     return new Promise(function(resolve) {
-        getUser(id, (user) => {
+        getUser(id).then(user => {
             if (user.val() != null) {
                 let keyID = Object.keys(user.val())[0];
                 let userPerfil = user.child(keyID).val();
