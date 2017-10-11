@@ -15,7 +15,7 @@ export function logout() {
 export const userExist = (id) => {
     return new Promise(function(resolve) {
         let user =  firebase.database().ref(`users/${id}`);
-        user.once('value', (dataUser) => {
+        user.once('value').then(dataUser => {
             resolve(dataUser.val() !== null)
         })
     })

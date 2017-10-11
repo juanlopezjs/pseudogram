@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-
+import promise from 'redux-promise-middleware';
 
 /* Reducers */
 import { user, login } from '../reducers/userReducer';
@@ -25,7 +25,7 @@ const logger = store => next => action => {
     return result
 }
 
-const middlewares = applyMiddleware(logger, thunk)
+const middlewares = applyMiddleware(promise(), logger, thunk)
 
 const store = createStore(
     reducers,
