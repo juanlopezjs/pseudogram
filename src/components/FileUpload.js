@@ -17,7 +17,7 @@ class FileUpload extends Component {
         return (
             <div className="file">
                 <div>
-                    <Progress color="#3897f0" percent={this.props.uploadValue} />
+                    <Progress color="#3897f0" percent={this.props.uploadValue} className="progress"/>
                 </div>
                 <input accept="jpg,jpeg,JPG,JPEG" className="file-input" id="file" multiple type="file" onChange={this.props.handleUpload.bind(this)} ref="file" />
                 <label htmlFor="file">

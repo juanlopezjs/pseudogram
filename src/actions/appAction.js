@@ -14,25 +14,21 @@ const pictutes = (pictures) => {
     }
 }
 
-export const onAuthStateChanged = () => (dispatch) => {
-    return new Promise(function(resolve) {
-        firebase.auth().onAuthStateChanged(data => {
-            let userRef = firebase.database().ref(`users/${data.uid}`);
-            userRef.once('value').then(dataUser => {
-                resolve(dispatch(user(dataUser.val())));
-            })
-        });
+export const onAuthStateChanged = () => async(dispatch) => {
+    return firebase.auth().onAuthStateChanged(async(data) => {
+        let userRef = await firebase.database().ref(`users/${data.uid}`);
+        let dataUser = await userRef.once('value');
+        dispatch(user(dataUser.val()));
     });
 }
 
 export const loadPicture = () => (dispatch, getState) => {
     //.limitToLast(11)
-    firebase.database().ref('pictures').orderByKey().on('child_added', snapshot => {
-        let userRef = firebase.database().ref(`users/${snapshot.val().uid}`);
-        userRef.once('value').then(user => {
-            let picture = snapshot.val();
-            picture['user'] = user.val()
-            dispatch(pictutes(picture))
-        })
+    firebase.database().ref('pictures').orderByKey().on('child_added', async(snapshot) => {
+        let userRef = await firebase.database().ref(`users/${snapshot.val().uid}`);
+        let user = await userRef.once('value')
+        let picture = snapshot.val();
+        picture['user'] = user.val()
+        dispatch(pictutes(picture))
     });
 }

@@ -14,7 +14,7 @@ const picturesPerfil = (pictures) => {
     }
 }
 
-const getUser = async (user, callback) => {
+const getUser = async(user, callback) => {
     let userRef = await firebase.database().ref('users').orderByChild('usuario').equalTo(user);
     let userF = await userRef.once('value');
     return userF;
@@ -22,20 +22,23 @@ const getUser = async (user, callback) => {
 
 export const btnSeguir = (userRequests, userFollow) => {
 
-    return dispatch => {
-        let bdFirebase = firebase.database()
-        bdFirebase.ref('users/' + userRequests)
-            .child("followed/" + userFollow)
-            .set({ uid: userFollow })
+    return async dispatch => {
+        try {
+            let bdFirebase = firebase.database()
+            let followed = await bdFirebase.ref('users/' + userRequests)
+                .child("followed/" + userFollow)
+            followed.set({ uid: userFollow })
 
-        /*Seguidores */
-        let followers = bdFirebase.ref('users/' + userFollow)
-        followers.child("followers/" + userRequests)
-            .set({ uid: userRequests })
+            /*Seguidores */
+            let followers = await bdFirebase.ref('users/' + userFollow)
+            followers.child("followers/" + userRequests).set({ uid: userRequests })
 
-        followers.once('value', (user) => {
+            let user = await followers.once('value') //, (user) => {
             dispatch(perfil(user.val()));
-        })
+        } catch (e) {
+            console.log(e)
+        }
+        //})
     }
 }
 

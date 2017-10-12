@@ -14,14 +14,15 @@ export const createUser = (user) => {
     })
 }
 
-export const registerButton = () => (dispatch, getState) => {
-    let form = document.forms[0];
-    let email = form.txtEmail.value;
-    let password = form.txtPass.value;
-    let nombres = form.txtName.value;
-    let usuario = form.txtUser.value;
+export const registerButton = () => async(dispatch, getState) => {
+    try {
+        let form = document.forms[0];
+        let email = form.txtEmail.value;
+        let password = form.txtPass.value;
+        let nombres = form.txtName.value;
+        let usuario = form.txtUser.value;
 
-    register(email, password).then((data) => {
+        let data = await register(email, password)
 
         let user = {
             uid: data.uid,
@@ -32,9 +33,8 @@ export const registerButton = () => (dispatch, getState) => {
         }
         createUser(user)
         dispatch(loginButton(false))
-
-    }).catch(error => {
+    } catch (error) {
         dispatch(messagesLoad(`${error.message}`));
         dispatch(openToast(true));
-    });
+    }
 }

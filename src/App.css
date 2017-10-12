@@ -226,6 +226,10 @@ progress {
     margin-top: 10px;
 }
 
+.progress__bar {
+    z-index: 9999 !important;
+}
+
 .collage {
     margin-top: 65px !important;
     max-width: 420px !important;

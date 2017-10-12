@@ -8,7 +8,7 @@ const uploadPicture = (uploadValue) => {
     }
 }
 
-export const handleUpload = event => async (dispatch, getState) => {
+export const handleUpload = event => async(dispatch, getState) => {
 
     const file = event.target.files[0];
 
@@ -19,9 +19,9 @@ export const handleUpload = event => async (dispatch, getState) => {
     }
 
     const storageRef = await firebase.storage().ref(`/fotos/${file.name}`);
-    const task = await storageRef.put(file);
+    const task = storageRef.put(file);
 
-    task.on('state_changed', async (snapshot) => {
+    task.on('state_changed', async(snapshot) => {
         let percentage = await Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         dispatch(uploadPicture(percentage))
 
