@@ -11,6 +11,8 @@ export const picturesPerfil = (state = [], action) => {
     switch (action.type) {
         case 'LOAD_PICTURES_PERFIL':
             return state.concat(action.pictures)
+        case 'RESET':
+            return []
         default:
             return state
     }

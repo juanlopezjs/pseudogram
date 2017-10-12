@@ -48,23 +48,20 @@ export const userFollowed = (arrayFollowed, userUid) => {
 }
 
 
-export const loadPerfil = (id) => (dispatch) => {
+export const loadPerfil = (id) => async(dispatch) => {
     //.limitToLast(11)
-    return new Promise(function(resolve) {
-        getUser(id).then(user => {
-            if (user.val() != null) {
-                let keyID = Object.keys(user.val())[0];
-                let userPerfil = user.child(keyID).val();
-                dispatch(perfil(userPerfil));
-                firebase.database().ref('pictures').orderByChild('uid').equalTo(keyID)
-                    .on('child_added', snapshot => {
-                        dispatch(picturesPerfil(snapshot.val()));
-                    })
-                resolve(true)
-            } else {
-                dispatch(perfil(null));
-                resolve(false)
-            }
-        });
-    })
+    let user = await getUser(id)
+    if (user.val() != null) {
+        let keyID = Object.keys(user.val())[0];
+        let userPerfil = user.child(keyID).val();
+        dispatch(perfil(userPerfil));
+        let pictures = await firebase.database().ref('pictures').orderByChild('uid').equalTo(keyID)
+        let prue = await pictures.once("value")
+        dispatch({ type: 'RESET' })
+        dispatch(picturesPerfil(Object.values(prue.val())));
+        return true
+    } else {
+        dispatch(perfil(null));
+        return false
+    }
 }
