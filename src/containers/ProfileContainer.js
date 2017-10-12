@@ -34,7 +34,7 @@ class ProfileContainer extends Component{
     }
 
     render(){
-        let perfil = this.props.perfil;
+        let {perfil} = this.props.perfil;
 
         if(!this.foundPage){
             return(<NotFound />)
@@ -56,7 +56,6 @@ class ProfileContainer extends Component{
 const mapStateToProps = (state) => {
     return {
         perfil: state.perfil,
-        picturesPerfil: state.picturesPerfil,
         user: state.user
     }
 };

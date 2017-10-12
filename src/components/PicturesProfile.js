@@ -9,7 +9,7 @@ const PicturesProfile = (props) => {
     return (
         <div className="grid">
         {
-            props.picturesPerfil.map(picture => (
+            props.perfil.picturesPerfil.map(picture => (
                 <div className="gridPhoto" key={picture.id}>
                     <ImageLoader
                         src={picture.image}

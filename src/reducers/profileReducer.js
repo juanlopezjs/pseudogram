@@ -1,19 +1,12 @@
-export const perfil = (state = null, action) => {
+const perfil = (state = {perfil : null, picturesPerfil : []}, action) => {
     switch (action.type) {
         case 'PERFIL':
-            return Object.assign({}, state, action.perfil)
+            return Object.assign({}, state, { perfil: action.perfil})
+        case 'LOAD_PICTURES_PERFIL':
+            return Object.assign({}, state, { picturesPerfil: action.pictures})
         default:
             return state
     }
 }
 
-export const picturesPerfil = (state = [], action) => {
-    switch (action.type) {
-        case 'LOAD_PICTURES_PERFIL':
-            return state.concat(action.pictures)
-        case 'RESET':
-            return []
-        default:
-            return state
-    }
-}
+export default perfil;

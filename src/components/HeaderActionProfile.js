@@ -5,7 +5,7 @@ const HeaderActionProfile = (props) =>{
     
     let user = props.user != null ? (props.user.usuario) : null;
 
-    if(user === props.perfil.usuario){
+    if(user === props.perfil.perfil.usuario){
         return (
             <div className="divContentSeguir">
                 <div>
@@ -16,7 +16,7 @@ const HeaderActionProfile = (props) =>{
                 </div>
             </div>
         )
-    }else if(user != null && props.userFollowed(props.user.followed, props.perfil.uid) === true){
+    }else if(user != null && props.userFollowed(props.user.followed, props.perfil.perfil.uid) === true){
         return (
             <div className="divContentSeguir">
                 <div>
@@ -31,7 +31,7 @@ const HeaderActionProfile = (props) =>{
         return (
             <div className="divContentSeguir">
                 <div>
-                    <button className="btnSeguir" onClick={() => props.btnSeguir(props.user.uid, props.perfil.uid)}>Seguir</button>
+                    <button className="btnSeguir" onClick={() => props.btnSeguir(props.user.uid, props.perfil.perfil.uid)}>Seguir</button>
                 </div>
                 <div className="divOpciones">
                     <button className="btnOpciones">...</button>

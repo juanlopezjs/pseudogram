@@ -3,9 +3,9 @@ import HeaderActionProfile from './HeaderActionProfile';
 
 const HeaderProfile = (props) => {
 
-    let perfil = props.perfil
-    let followed = perfil != null && props.perfil.followed ? (props.perfil.followed) : {};
-    let followers = perfil != null && props.perfil.followers ? (props.perfil.followers) : {};
+    let {perfil} = props.perfil
+    let followed = perfil != null && props.perfil.perfil.followed ? (props.perfil.perfil.followed) : {};
+    let followers = perfil != null && props.perfil.perfil.followers ? (props.perfil.perfil.followers) : {};
 
     return (
         <header>
@@ -20,7 +20,7 @@ const HeaderProfile = (props) => {
                     <HeaderActionProfile {...props}/>
                 </div>
                 <ul className="ulCont">
-                    <li><span>{props.picturesPerfil.length}</span> publicaciones</li>
+                    <li><span>{props.perfil.picturesPerfil.length}</span> publicaciones</li>
                     <li><span>{Object.keys(followers).length}</span> seguidores</li>
                     <li><span>{Object.keys(followed).length}</span> seguidos</li>
                 </ul>

@@ -5,7 +5,7 @@ import promise from 'redux-promise-middleware';
 /* Reducers */
 import { user, login } from '../reducers/userReducer';
 import { pictures, fileUpload } from '../reducers/picturesReducer';
-import { perfil, picturesPerfil } from '../reducers/profileReducer';
+import perfil from '../reducers/profileReducer';
 import toast from '../reducers/toastReducer';
 import popover from '../reducers/popoverReducer';
 
@@ -16,7 +16,6 @@ const reducers = combineReducers({
     fileUpload,
     toast,
     perfil,
-    picturesPerfil,
     popover
 });
 
