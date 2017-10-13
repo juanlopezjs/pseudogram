@@ -591,6 +591,10 @@ header {
     padding: 0;
 }
 
+.preload {
+    position: relative !important;
+}
+
 .preloadAnimated {
     left: 50%;
     position: absolute;
