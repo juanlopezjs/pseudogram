@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { openToast, messagesLoad } from './toastAction';
 
 const perfil = (perfil) => {
     return {
@@ -35,8 +36,9 @@ export const btnSeguir = (userRequests, userFollow) => {
 
             let user = await followers.once('value') //, (user) => {
             dispatch(perfil(user.val()));
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            dispatch(messagesLoad(`${error.message}`));
+            dispatch(openToast(true));
         }
         //})
     }
@@ -57,7 +59,7 @@ export const loadPerfil = (id) => async(dispatch) => {
         dispatch(perfil(userPerfil));
         let pictures = await firebase.database().ref('pictures').orderByChild('uid').equalTo(keyID)
         let prue = await pictures.once("value")
-        dispatch({ type: 'RESET' })
+
         dispatch(picturesPerfil(Object.values(prue.val())));
         return true
     } else {

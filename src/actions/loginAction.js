@@ -10,9 +10,9 @@ const authenticate = () => {
 
 export const loginButton = provider => async(dispatch) => {
     try {
-        let result = await fakeAuth.authenticate(provider) //.then((result) => {
+        let result = await fakeAuth.authenticate(provider)
         if (provider) {
-            let exist = await userExist(result.user.uid) //.then((exist) => {
+            let exist = await userExist(result.user.uid)
             if (exist === false) {
                 let user = {
                     uid: result.user.uid,
