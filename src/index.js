@@ -11,6 +11,7 @@ import App from './containers/App';
 import Login from './containers/LoginContainer';
 import Toast from './containers/ToastContainer';
 import Register from './containers/RegisterContainer';
+import Dialogs from "./containers/DialogContainer";
 /*Style */
 import './App.css';
 
@@ -30,6 +31,7 @@ render(
     <Provider store={store}>
         <div>
             <Toast/>
+            <Dialogs/>
             <BrowserRouter history={history}>
                 <Switch>
                     <Route exact path="/login" name="Login Page" component={Login} />
