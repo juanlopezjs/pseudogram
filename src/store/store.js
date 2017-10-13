@@ -8,6 +8,7 @@ import { pictures, fileUpload } from '../reducers/picturesReducer';
 import perfil from '../reducers/profileReducer';
 import toast from '../reducers/toastReducer';
 import popover from '../reducers/popoverReducer';
+import dialog from '../reducers/dialogReducer';
 
 const reducers = combineReducers({
     login,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
     fileUpload,
     toast,
     perfil,
-    popover
+    popover,
+    dialog
 });
 
 const logger = store => next => action => {

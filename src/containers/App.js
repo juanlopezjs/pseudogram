@@ -17,6 +17,7 @@ import Home from '../containers/HomeContainer';
 import Explorer from '../components/Explorer';
 import ProfileView from '../containers/ProfileContainer';
 import NotFound from '../components/NotFound';
+import AccountEdit from '../containers/AccountEdit';
 
 const style = {
   margin: "20px",
@@ -72,6 +73,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/explore" render={() => (<Explorer />)} />
             <Route exact path="/" render={(props) => (<Home {...props} />)} />
+            <Route exact path="/accounts/edit/" component={AccountEdit}/>
             <Route exact path="/:id" component={ProfileView} />
             <Route path="*" component={NotFound} />
           </Switch>

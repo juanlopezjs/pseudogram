@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {loadPerfil, btnSeguir, userFollowed} from '../actions/profileAction'
+import {handleClickOpen, handleRequestClose} from '../actions/dialogAction'
 
 /** COMPONENTS **/
 import HeaderProfile from '../components/HeaderProfile';
@@ -56,7 +57,8 @@ class ProfileContainer extends Component{
 const mapStateToProps = (state) => {
     return {
         perfil: state.perfil,
-        user: state.user
+        user: state.user,
+        dialog: state.dialog
     }
 };
 
@@ -65,6 +67,8 @@ export default connect(
     {
         loadPerfil,
         btnSeguir,
-        userFollowed
+        userFollowed,
+        handleClickOpen,
+        handleRequestClose
     }
 )(ProfileContainer);
