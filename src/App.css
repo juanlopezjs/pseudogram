@@ -653,6 +653,17 @@ header {
     background-color: transparent;
     font-weight: 400;
 }
+.list{
+    min-width: 510px;
+    text-align: center;
+    padding: 0px !important;
+}
+.listItem{
+    border-bottom: 1px solid #dbdbdb !important;
+}
+.listText{
+    padding: 2px !important;
+}
 
 @-webkit-keyframes spinner-spin12 {
     0% {

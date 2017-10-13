@@ -1,11 +1,16 @@
 import React from 'react';
-const style = {
-    width:"200px",
-    height: "200px"
-}
+import List, { ListItem, ListItemText } from 'material-ui/List';
+
 const settingsUser = () => {
     return(
-        <div style={style}>Prueba jose</div>
+        <List className="list">
+            <ListItem button className="listItem">
+                <ListItemText primary="Cambiar contraseña" className="listText"/>
+            </ListItem>
+            <ListItem button className="listItem">
+                <ListItemText primary="Cancelar" className="listText"/>
+            </ListItem>
+        </List>
     )
 }
 
