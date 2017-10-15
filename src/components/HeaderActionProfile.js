@@ -1,13 +1,13 @@
 import React from 'react';
 import Settings from 'material-ui-icons/Settings';
 import { Link } from "react-router-dom";
-import settingsUser from "./SettingsUser";
 
 const HeaderActionProfile = (props) =>{
     
     let user = props.user != null ? (props.user.usuario) : null;
     
     if(user === props.perfil.perfil.usuario){
+        let component = props.actions('SETTINGS')
         return (
             <div className="divContentSeguir">
                 <Link to="/accounts/edit/">
@@ -16,18 +16,19 @@ const HeaderActionProfile = (props) =>{
                     </div>
                 </Link>
                 <div className="settings">
-                    <button className="btnSettings" onClick={()=>props.handleClickOpen(settingsUser)}><Settings/></button>
+                    <button className="btnSettings" onClick={()=>props.handleClickOpen(component)}><Settings/></button>
                 </div>
             </div>
         )
     }else if(user != null && props.userFollowed(props.user.followed, props.perfil.perfil.uid) === true){
+        let component = props.actions('USER_FOLLOWED')
         return (
             <div className="divContentSeguir">
                 <div>
                 <button className="btnEditPerfil">Seguido</button>
                 </div>
                 <div className="divOpciones">
-                    <button className="btnOpciones">...</button>
+                    <button className="btnOpciones" onClick={()=>props.handleClickOpen(component)}>...</button>
                 </div>
             </div>
         )

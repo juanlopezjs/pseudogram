@@ -11,6 +11,9 @@ import Profile from 'material-ui-icons/PermIdentity';
 import Exit from 'material-ui-icons/ExitToApp';
 import Photo from 'material-ui-icons/PhotoCamera';
 import Popover from 'material-ui/Popover';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import IconButton from 'material-ui/IconButton';
 
 /*View */
 import Home from '../containers/HomeContainer';
@@ -45,30 +48,38 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="App-header">
-          <div className="item">
-            <Link to="/" className="home">
-              <Photo style={{ width: 20, height: 20, }} /><h2>Pseudogram</h2>
-            </Link>
-          </div>
-          <div className="searchBar">
-            <input type="text" placeholder="Buscar" />
-          </div>
-          <div className="user">
-            <Link to="/explore" className="itemsMenu">
-              <Explore style={{ width: 24, height: 24, }} />
-            </Link>
-            <Link to="#" ref={node => {this.button = node;}} className="itemsMenu" onClick={() => this.props.togglePopover(this.button)}>
-              <Favorite style={{ width: 24, height: 24, }} />
-            </Link>
-            <Link to={perfil} className="itemsMenu">
-              <Profile style={{ width: 24, height: 24, }} />
-            </Link>
-            <Link to="#" className="itemsMenu" onClick={logout.bind(this)}>
-              <Exit style={{ width: 24, height: 24, }} />
-            </Link>
-          </div>
-        </div>
+        <AppBar position="fixed" className="App-header">
+            <Toolbar>
+              <div className="item">
+                <Link to="/" className="home">
+                  <Photo style={{ width: 20, height: 20, }} /><h2>Pseudogram</h2>
+                </Link>
+              </div>
+              <div className="searchBar">
+                <input type="text" placeholder="Buscar" />
+              </div>
+              <div className="user">
+                  <Link to="/explore">
+                    <IconButton className="itemsMenu">
+                      <Explore style={{ width: 24, height: 24, }} />
+                    </IconButton>
+                  </Link>
+                  <IconButton className="itemsMenu" onClick={this.props.togglePopover}>
+                      <Favorite style={{ width: 24, height: 24, }} />
+                  </IconButton>
+                  <Link to={perfil}>
+                    <IconButton className="itemsMenu">
+                      <Profile style={{ width: 24, height: 24, }} />
+                    </IconButton>
+                  </Link>
+                  <Link to="#" onClick={logout.bind(this)}>
+                    <IconButton className="itemsMenu">
+                      <Exit style={{ width: 24, height: 24, }} />
+                    </IconButton>
+                  </Link>
+              </div>
+            </Toolbar>
+        </AppBar>
         <div className="App-intro">
           <Switch>
             <Route exact path="/explore" render={() => (<Explorer />)} />
@@ -79,18 +90,13 @@ class App extends Component {
           </Switch>
         </div>
         <Popover
-          className="popover"
           open={this.props.popover.open}
           anchorEl={this.props.popover.anchorEl}
-          onRequestClose={() => this.props.handleRequestClose()}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-          transformOrigin={{
-            vertical: 'center',
-            horizontal: 'center',
-          }}>
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+          transformOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          onRequestClose={this.props.handleRequestClose}
+          animated={true}
+          >
             <h2 style={style}>example</h2>
           </Popover>
       </div>

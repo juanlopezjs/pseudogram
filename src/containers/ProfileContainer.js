@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {loadPerfil, btnSeguir, userFollowed} from '../actions/profileAction'
 import {handleClickOpen, handleRequestClose} from '../actions/dialogAction'
+import actions from '../actions/headerProfileAction'
 
 /** COMPONENTS **/
 import HeaderProfile from '../components/HeaderProfile';
@@ -69,6 +70,7 @@ export default connect(
         btnSeguir,
         userFollowed,
         handleClickOpen,
-        handleRequestClose
+        handleRequestClose,
+        actions
     }
 )(ProfileContainer);

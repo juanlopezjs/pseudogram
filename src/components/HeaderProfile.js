@@ -6,11 +6,14 @@ const HeaderProfile = (props) => {
     let {perfil} = props.perfil
     let followed = perfil != null && props.perfil.perfil.followed ? (props.perfil.perfil.followed) : {};
     let followers = perfil != null && props.perfil.perfil.followers ? (props.perfil.perfil.followers) : {};
+    let user = props.user != null ? (props.user.usuario) : null;
 
+    let component = props.actions('USER_IN')
+    
     return (
         <header>
             <div className="photo">
-                <div>
+                <div {...(user === perfil.usuario && {style:{cursor:"pointer"}, onClick : ()=>props.handleClickOpen(component)})}>
                     <img src={perfil.photoURL} alt={perfil.usuario} />
                 </div>
             </div>

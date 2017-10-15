@@ -8,7 +8,7 @@ const DialogsCointainer = ({dialog, handleRequestClose }) =>{
     return (
         <Dialog open={dialog.open} onRequestClose={handleRequestClose}>
             {dialog.content !=  null &&
-                <dialog.content/>
+                dialog.content
             }
         </Dialog>
     )

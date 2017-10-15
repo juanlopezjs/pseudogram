@@ -1,10 +1,11 @@
-import { findDOMNode } from 'react-dom';
 
-export const togglePopover = (element) => {
+export const togglePopover = (event) => {
+    event.preventDefault();
+    
     return dispatch => {
         dispatch(
             { type: "OPEN_POPOVER", open: true },
-            { type: "ANCHOR_EL", anchorEl: findDOMNode(element) }
+            { type: "ANCHOR_EL", anchorEl: event.currentTarget}
         )
     }
 }
