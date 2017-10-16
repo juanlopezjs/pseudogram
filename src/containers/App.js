@@ -84,7 +84,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/explore" render={() => (<Explorer />)} />
             <Route exact path="/" render={(props) => (<Home {...props} />)} />
-            <Route exact path="/accounts/edit/" component={AccountEdit}/>
+            <Route path="/accounts/" component={AccountEdit}/>
             <Route exact path="/:id" component={ProfileView} />
             <Route path="*" component={NotFound} />
           </Switch>

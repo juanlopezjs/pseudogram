@@ -8,8 +8,7 @@ const HeaderProfile = (props) => {
     let followers = perfil != null && props.perfil.perfil.followers ? (props.perfil.perfil.followers) : {};
     let user = props.user != null ? (props.user.usuario) : null;
 
-    let component = props.actions('USER_IN')
-    
+    let component = props.actions('USER_IN', props)
     return (
         <header>
             <div className="photo">

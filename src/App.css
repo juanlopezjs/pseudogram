@@ -664,6 +664,33 @@ header {
     border-bottom: 1px solid #dbdbdb !important;
 }
 
+.listItemEditUser {
+    border-bottom: 0px !important;
+    font-weight: 600 !important;
+    text-align: left;
+    display: block !important;
+    font-size: 16px !important;
+    height: 100% !important;
+    line-height: 20px !important;
+    padding: 16px 16px 16px 30px !important;
+    width: calc(100% - 48px) !important;
+    border-left: 2px solid transparent !important;
+}
+
+.listItemEditUser:hover {
+    background-color: #fafafa !important;
+    border-left: 2px solid #dbdbdb !important;
+}
+
+.listItemActiveEdit {
+    border-left: 2px solid #262626 !important;
+}
+
+.listItemActiveEdit:hover {
+    background-color: transparent !important;
+    border-left: 2px solid #262626 !important;
+}
+
 .listText {
     padding: 2px !important;
 }
@@ -671,6 +698,51 @@ header {
 .listTextDisabled h3 {
     color: #999 !important;
     font-weight: 600 !important;
+}
+
+.listNavEdit {
+    border-right: 1px solid #dbdbdb;
+    flex: 1 1 20% !important;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    order: 1;
+}
+
+.contentEditUser {
+    -webkit-flex: 1 1 70%;
+    -ms-flex: 1 1 70%;
+    flex: 1 1 70%;
+    min-width: 50px;
+    -webkit-box-flex: 1;
+    order: 2;
+}
+
+.editUser {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-pack: stretch;
+    -webkit-justify-content: stretch;
+    -ms-flex-pack: stretch;
+    justify-content: stretch;
+    margin: 30px auto 0;
+    max-width: 935px;
+    overflow: hidden;
+    height: 900px;
 }
 
 @-webkit-keyframes spinner-spin12 {

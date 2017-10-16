@@ -1,38 +1,40 @@
 import React from 'react';
 import ListItemAction from "../components/ListItemAction";
 
-const arraySettings = [
-    {item:'Cambiar contraseña', action: () => {alert("bn")}},
-    {item:'Cerrar sesión', action: () => {alert("mal")}},
-    {item:'Cancelar', action: () => {alert("mal")}}
+const arraySettings = (props) => [
+    {item:'Cambiar contraseña', attr: {onClick: () => {
+        props.handleRequestClose();
+        props.history.push('/accounts/password/change/');
+    }}},
+    {item:'Cerrar sesión', attr: {onClick: () => {alert("mal")}}},
+    {item:'Cancelar', attr: {onClick: () => {props.handleRequestClose()}}}
 ]
 
-const arrayUserFollowed = [
-    {item:'Reportar usuario', action: () => {alert("bn")}},
-    {item:'Bloquear a este usuario', action: () => {alert("mal")}},
-    {item:'Cancelar', action: () => {alert("mal")}}
+const arrayUserFollowed = (props) => [
+    {item:'Reportar usuario', attr: {onClick: () => {alert("bn")}}},
+    {item:'Bloquear a este usuario', attr: {onClick: () => {alert("mal")}}},
+    {item:'Cancelar', attr: {onClick: () => {props.handleRequestClose()}}}
 ]
 
-const arrayUserIn = [
-    {item:'Cambiar foto de perfil', disabled: true},
-    {item:'Eliminar foto actual', action: () => {alert("mal")}},
-    {item:'Subir foto', action: () => {alert("mal")}},
-    {item:'Cancelar', action: () => {alert("mal")}}
+const arrayUserIn = (props) => [
+    {item:'Cambiar foto de perfil', attr: {disabled: true}},
+    {item:'Eliminar foto actual', attr: {onClick: () => {alert("mal")}}},
+    {item:'Subir foto', attr: {onClick: () => {alert("mal")}}},
+    {item:'Cancelar', attr: {onClick: () => {props.handleRequestClose()}}}
 ]
 
 
-const actions = (accion) =>{
+const actions = (accion, props) =>{
     let array = [];
-    
     if(accion === 'SETTINGS'){
-        array = arraySettings
+        array = arraySettings(props)
     }else if(accion === 'USER_FOLLOWED'){
-        array = arrayUserFollowed
+        array = arrayUserFollowed(props)
     }else if(accion === 'USER_IN'){
-        array = arrayUserIn
+        array = arrayUserIn(props)
     }
 
-    return(<ListItemAction arrayActions={array}/>)
+    return(<ListItemAction {...props} arrayActions={array} className="list"/>)
 }
 
 export default actions;

@@ -7,7 +7,7 @@ const HeaderActionProfile = (props) =>{
     let user = props.user != null ? (props.user.usuario) : null;
     
     if(user === props.perfil.perfil.usuario){
-        let component = props.actions('SETTINGS')
+        let component = props.actions('SETTINGS',props)
         return (
             <div className="divContentSeguir">
                 <Link to="/accounts/edit/">
@@ -21,7 +21,7 @@ const HeaderActionProfile = (props) =>{
             </div>
         )
     }else if(user != null && props.userFollowed(props.user.followed, props.perfil.perfil.uid) === true){
-        let component = props.actions('USER_FOLLOWED')
+        let component = props.actions('USER_FOLLOWED', props)
         return (
             <div className="divContentSeguir">
                 <div>

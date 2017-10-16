@@ -5,11 +5,17 @@ const settingsUser = (props) => {
     let {arrayActions} = props;
     if(arrayActions.length > 0){
         return(
-            <List className="list">
+            <List className={props.className}>
             {
                 arrayActions.map((arrayItem, i) =>(
-                    <ListItem className="listItem" {...(arrayItem.disabled !== true && {button : true})} key={i}>
-                        <ListItemText className="listText" {...(arrayItem.disabled === true && {className:"listTextDisabled"})} primary={arrayItem.item}  onClick={arrayItem.action}/>
+                    <ListItem 
+                        {...arrayItem.attr} 
+                        {...(arrayItem.attr.className === undefined ? {className: "listItem"} : {className: arrayItem.attr.classItem})} 
+                        {...(arrayItem.attr.button === undefined ? {button : true} : {button: arrayItem.attr.button})} 
+                        key={i}>
+                        <ListItemText 
+                            {...(arrayItem.attr.disabled  ? {className:"listTextDisabled"} :{className:"listText"})}
+                            primary={arrayItem.item}/>
                     </ListItem>
                 ))
             }
