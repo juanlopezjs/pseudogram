@@ -14,15 +14,7 @@ import Register from './containers/RegisterContainer';
 import Dialogs from "./containers/DialogContainer";
 /*Style */
 import './App.css';
-
-
-const config = {
-    apiKey: "AIzaSyDitW7uHb6tE6qtbLgS_1d9tajYWDjdwxY",
-    authDomain: "pseudogram-ed48c.firebaseapp.com",
-    databaseURL: "https://pseudogram-ed48c.firebaseio.com",
-    storageBucket: "pseudogram-ed48c.appspot.com",
-    messagingSenderId: "887707537740"
-};
+import config from './data/dataConfig'
 
 const history = createBrowserHistory();
 firebase.initializeApp(config);
