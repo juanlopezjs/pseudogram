@@ -10,7 +10,7 @@ const settingsUser = (props) => {
                 arrayActions.map((arrayItem, i) =>(
                     <ListItem 
                         {...arrayItem.attr} 
-                        {...(arrayItem.attr.className === undefined ? {className: "listItem"} : {className: arrayItem.attr.classItem})} 
+                        {...(arrayItem.attr.className === undefined ? {className: "listItem"} : {className: arrayItem.attr.className})} 
                         {...(arrayItem.attr.button === undefined ? {button : true} : {button: arrayItem.attr.button})} 
                         key={i}>
                         <ListItemText 
