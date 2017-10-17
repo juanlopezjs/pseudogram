@@ -713,6 +713,10 @@ header {
     order: 1;
 }
 
+.listNavEdit ul {
+    padding: 0px !important;
+}
+
 .contentEditUser {
     -webkit-flex: 1 1 70%;
     -ms-flex: 1 1 70%;
@@ -742,7 +746,13 @@ header {
     margin: 30px auto 0;
     max-width: 935px;
     overflow: hidden;
-    height: 900px;
+}
+
+.divProfileAcc {
+    display: flex;
+    flex-direction: row;
+    margin: 32px 0 16px;
+    justify-content: flex-start;
 }
 
 @-webkit-keyframes spinner-spin12 {
